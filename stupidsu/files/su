@@ -1,0 +1,7 @@
+#!/system/bin/sh
+#
+# Author: François SIMOND @supercurio for StupidSU
+# This is the stupid "exploit" itself, which is only a setuid permission helper
+# No comment :/
+
+/system/xbin/mksh -c "/system/xbin/su-real $*"

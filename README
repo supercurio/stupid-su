@@ -1,0 +1,42 @@
+Stupid SU: Galaxy S4 root helper by François SIMOND aka @supercurio
+
+Circumvent an extremely weak false-security "Anti Root" mechanism implemented
+on latest Samsung Galaxy S4 devices (on both Exynos and Qualcomm versions)
+
+Preventing proper root function on official firmware breaks all my Voodoo apps
+requiring stock+root and is a move that's hostile to both users and developers.
+
+Samsung security might be embarassed by this proof of concept, as it defeats
+their mechanism in a single line... not even with complex ARM assembler
+but *one* line of shell script.
+However, the goal here is to show Superuser solutions developers how to
+deal with those devices for now, and provide a working solution to people who
+bought a Galaxy S4 expecting to root it cleanly and easily but cannot.
+
+This proof of concept is slightly slowing down Superuser calls, but its
+"plain text" implementation has the merit of showing how stupid this exploit is.
+
+SELinux configuration stays unmodified and active.
+
+Features:
+- Detect and supports both SuperSU and Koush's Superuser
+- Installs Super SU binary by default
+
+Make sure you have one of those Superuser apps installed:
+- https://play.google.com/store/apps/details?id=com.koushikdutta.superuser
+- https://play.google.com/store/apps/details?id=eu.chainfire.supersu
+
+In StupidSU environment and for this initial release Koush's Superuser app would
+be preffered as SuperSU main UI refuses to launch because it cannot detect its
+original su binary. Aside from that both work as expected.
+
+
+Important Note:
+This "exploit" is so lame that it will be fixed in no time, making updated S4
+a pain to root again.
+
+I wish Samsung will reconsider their "Anti Root" approach, which is damageable
+in every regard and defective by design as demonstrated here.
+Also, I'm simply not interested developing for and promoting devices from
+manufacturers hostile to developers: It's just a waste of valuable time.
+

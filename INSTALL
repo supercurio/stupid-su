@@ -1,0 +1,21 @@
+1/ copy rooting/ directory in your initramfs
+
+Make sure "root.sh" file is has an executable permission (chmod 744 recommended)
+
+
+2/ Add those lines at init.universal5410.rc end:
+
+# Stupid SU
+service rooting /stupidsu/root.sh
+    class main
+    user root
+    group root
+    oneshot
+
+3/ Assemble your initramfs with the associated Samsung official kernel binary
+of choice in a regular boot image
+
+4/ flash as boot.img
+
+5/ At each boot, Superuser app are detected automatically and su binary adjusted
+accordingly.
