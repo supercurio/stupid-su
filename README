@@ -26,10 +26,9 @@ Make sure you have one of those Superuser apps installed:
 - https://play.google.com/store/apps/details?id=com.koushikdutta.superuser
 - https://play.google.com/store/apps/details?id=eu.chainfire.supersu
 
-In StupidSU environment and for this initial release Koush's Superuser app would
-be preffered as SuperSU main UI refuses to launch because it cannot detect its
-original su binary. Aside from that both work as expected.
-
+Root feature doesn't rely on a "StupidSU kernel" which is only an installer.
+Feel free to flash back Samsung's original boot.img from their official firmware
+after booting at least once.
 
 Important Note:
 This "exploit" is so lame that it will be fixed in no time, making updated S4

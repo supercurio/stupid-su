@@ -3,26 +3,48 @@
 # Author: François SIMOND @supercurio for StupidSU
 # This is the installer
 
+VERSION="`cat /stupidsu/VERSION`"
+TAG="StupidSU #$VERSION"
 SRCDIR="/stupidsu/files"
 DSTDIR="/system/xbin"
+SUPERSUBKPDIR="/system/bin/.ext"
+
+_log()
+{
+	log -t "$TAG" $1
+}
 
 remount()
 {
+	_log "remount system as $1"
 	mount -o remount,$1 /system
 }
 
 copy()
 {
-	cat $SRCDIR/$1 > $DSTDIR/$1
-	chown root:root $DSTDIR/$1
-	chmod 06755 $DSTDIR/$1
+	DST="$DSTDIR/$1"
+	_log "copy $1 to $DST"
+	cat $SRCDIR/$1 > $DST
+	chown root:root $DST
+	chmod 06755 $DST
 }
 
-link_real_su()
+copy_supersu_backup()
+{
+	_log "copy backup su file for SuperSU"
+	mkdir -p $SUPERSUBKPDIR
+	cat $SRCDIR/su > $SUPERSUBKPDIR/.su
+	chmod 06755 $SUPERSUBKPDIR/.su
+}
+
+setup_real_su()
 {
 	test -f /data/app/com.koushikdutta.superuser*.apk \
 		&& PROVIDER="koush" \
-		|| PROVIDER="supersu"
+			&& _log "preparing su for Koush's Superuser" \
+		|| PROVIDER="supersu" \
+			&& copy_supersu_backup \
+			&& _log "preparing su for SuperSU" \
 
 	rm $DSTDIR/su-real
 	ln -s $DSTDIR/su-$PROVIDER $DSTDIR/su-real
@@ -35,6 +57,6 @@ for x in *; do
 	copy $x
 done
 
-link_real_su
+setup_real_su
 
 remount ro
