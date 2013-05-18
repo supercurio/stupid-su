@@ -33,6 +33,7 @@ copy_supersu_backup()
 {
 	_log "copy backup su file for SuperSU"
 	mkdir -p $SUPERSUBKPDIR
+	chmod 755 $SUPERSUBKPDIR
 	cat $SRCDIR/su > $SUPERSUBKPDIR/.su
 	chmod 06755 $SUPERSUBKPDIR/.su
 }
