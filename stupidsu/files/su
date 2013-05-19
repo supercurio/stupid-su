@@ -4,4 +4,4 @@
 # This is the stupid "exploit" itself, which is only a setuid permission helper
 # No comment :/
 
-/system/xbin/mksh -c "/system/xbin/su-real $*"
+/system/xbin/mksh -c "/system/xbin/su-real '$*'"
